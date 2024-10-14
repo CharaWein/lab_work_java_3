@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AHashTable<K, V> {
     private final int length = 16;
-    private final int XOR = 339339993;
+    private final int CHARA = 42;
     LinkedList<Tuple<K, V>>[] array = new LinkedList[length];
     private int size = 0;
 
@@ -57,7 +57,7 @@ public class AHashTable<K, V> {
     }
 
     private int hash(K key){
-        return Math.abs((key.hashCode() ^ XOR) % length);
+        return (Math.abs(key.hashCode() + CHARA) % length);
     }
 }
 class Tuple<K, V> implements Map.Entry<K, V> {
